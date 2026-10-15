@@ -10,19 +10,44 @@ h1{
     color: #4af626;
     font-size: 3rem;
     text-shadow: 2px 2px 5px black;
+    -webkit-text-stroke: 2px black;
 }
 
 h2{
     color: #ff4444;
+    -webkit-text-stroke: 1px black;
 }
 
 .intro {
     max-width: 600px;
     margin: 0 auto 30px auto;
-    background-color: black;
+    background-color: rgb(149, 148, 148);
     padding: 20px;
     border: 3px solid #4af626;
     border-radius: 10px;
     text-align: left;
     line-height: 1.6;
+}
+
+.menu-nav-bar, .game-nav-bar, .shop-nav-bar {
+    margin-top: 20px;
+}
+
+.home-button, .start-button, .shop-button {
+    display: inline-block;
+    background-color: black;
+    color: #4af626;
+    border: 2px solid #4af626;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover, .start-button:hover, .shop-button:hover {
+    background-color: #4af626;
+    color: black;
 }
