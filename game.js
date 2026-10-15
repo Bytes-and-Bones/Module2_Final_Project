@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
     const survivorName = localStorage.getItem("survivorName");
     const survivorNameElement = document.getElementById("playerName");
@@ -22,7 +22,7 @@ playerImg.src = "Assets/Player.png"
 let playerY = 180;
 const playerX = 83;
 const playerSpeed = 5;
-const playerSize = 40;
+const playerSize = 50;
 
 let bullets = [];
 let zombies = [];
@@ -30,14 +30,14 @@ let ammoCount = 10;
 
 const keysPressed = {};
 
-window.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", function (event) {
     keysPressed[event.code] = true;
     if (event.code === "Space") {
         shootBullet();
     }
 });
 
-window.addEventListener("keyup", function(event) {
+window.addEventListener("keyup", function (event) {
     keysPressed[event.code] = false;
 });
 
@@ -58,18 +58,19 @@ function shootBullet() {
 function spawnZombie() {
 
     const skyHeight = 100;
-    const playArea= canvas.height - skyHeight - 40; 
+    const playArea = canvas.height - skyHeight - zSize;
+    const zSize = 65
 
     zombies.push({
-        x: 620,
+        x: canvas.width + 20,
         y: skyHeight + (Math.random() * playArea),
-        width: 40,
-        height: 40,
+        width: zSize,
+        height: zSize,
         speed: 1.5
     });
 }
 
-setInterval(spawnZombie, 2000);
+const spawnTimer = setInterval(spawnZombie, 2000);
 
 function updateGameLogic() {
     if (keysPressed["ArrowUp"] && playerY > 100) {
@@ -80,7 +81,7 @@ function updateGameLogic() {
     }
     for (let i = bullets.length - 1; i >= 0; i--) {
         bullets[i].x += bullets[i].speed;
-        if(bullets[i].x > canvas.width) {
+        if (bullets[i].x > canvas.width) {
             bullets.splice(i, 1);
         }
     }
@@ -91,10 +92,10 @@ function updateGameLogic() {
                 bullets[b].x + bullets[b].width > zombies[z].x &&
                 bullets[b].y < zombies[z].y + zombies[z].height &&
                 bullets[b].y + bullets[b].height > zombies[z].y) {
-                    zombies.splice(z, 1);
-                    bullets.splice(b, 1);
-                    break;
-                }
+                zombies.splice(z, 1);
+                bullets.splice(b, 1);
+                break;
+            }
         }
     }
 }
@@ -102,12 +103,12 @@ function updateGameLogic() {
 function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-   if (playerImg.complete) {
+    if (playerImg.complete && playerImg.naturalWidth !== 0) {
         ctx.drawImage(playerImg, playerX, playerY, playerSize, playerSize);
-   }else{
+    } else {
         ctx.fillStyle = "white";
         ctx.fillRect(playerX, playerY, playerSize, playerSize);
-   }
+    }
 
     ctx.fillStyle = "yellow";
     bullets.forEach(bullet => {
@@ -115,9 +116,9 @@ function drawGame() {
     });
 
     zombies.forEach(zombie => {
-        if(zombieImg.complete) {
+        if (zombieImg.complete && zombieImg.naturalWidth !== 0) {
             ctx.drawImage(zombieImg, zombie.x, zombie.y, zombie.width, zombie.height);
-        }else{
+        } else {
             ctx.fillStyle = "green";
             ctx.fillRect(zombie.x, zombie.y, zombie.width, zombie.height);
         }
