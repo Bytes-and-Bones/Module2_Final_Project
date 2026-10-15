@@ -16,6 +16,9 @@ const ctx = canvas.getContext("2d");
 const zombieImg = new Image();
 zombieImg.src = "Assets/Zombie.png"
 
+const playerImg = new Image();
+playerImg.src = "Assets/Player.png"
+
 let playerY = 180;
 const playerX = 83;
 const playerSpeed = 5;
@@ -99,8 +102,12 @@ function updateGameLogic() {
 function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "white";
-    ctx.fillRect(playerX, playerY, playerSize, playerSize);
+   if (playerImg.complete) {
+        ctx.drawImage(playerImg, playerX, playerY, playerSize, playerSize);
+   }else{
+        ctx.fillStyle = "white";
+        ctx.fillRect(playerX, playerY, playerSize, playerSize);
+   }
 
     ctx.fillStyle = "yellow";
     bullets.forEach(bullet => {
