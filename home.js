@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (playerName && playerName.trim() !== "") {
 
-            localStorage.setItem("playerName", playerName.trim());
+            localStorage.setItem("survivorName", playerName.trim());
 
             window.location.href = "game.html";
         } else {
