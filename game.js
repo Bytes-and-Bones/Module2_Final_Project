@@ -58,8 +58,9 @@ function shootBullet() {
 function spawnZombie() {
 
     const skyHeight = 100;
-    const playArea = canvas.height - skyHeight - zSize;
     const zSize = 65
+    const playArea = canvas.height - skyHeight - zSize;
+    
 
     zombies.push({
         x: canvas.width + 20,
