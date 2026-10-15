@@ -20,9 +20,9 @@ const playerImg = new Image();
 playerImg.src = "Assets/Player.png"
 
 let playerY = 180;
-const playerX = 83;
+const playerX = 50;
 const playerSpeed = 5;
-const playerSize = 50;
+const playerSize = 90;
 
 let bullets = [];
 let zombies = [];
@@ -58,7 +58,7 @@ function shootBullet() {
 function spawnZombie() {
 
     const skyHeight = 100;
-    const zSize = 65
+    const zSize = 120;
     const playArea = canvas.height - skyHeight - zSize;
     
 
