@@ -59,6 +59,18 @@ h2{
     padding: 20px;
     border: 3px solid #4af626;
     border-radius: 10px;
-    text-align: left;
     line-height: 1.6;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+#gameCanvas { 
+    display: block;
+    max-width:100;
+    margin: 0 auto;
+    background-image: url(Assets/Background.png);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-size: 100% 100%;
 }
