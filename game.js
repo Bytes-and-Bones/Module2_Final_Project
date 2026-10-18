@@ -232,10 +232,10 @@ function drawGame() {
         }
     });
 
-    ctx.font = "bold 20px 'Courier New' Courier, monospace";
-    ctx.fillStyle = "#4af626";
+    ctx.font = "bold 20px 'Courier New', Courier, monospace";
+    ctx.fillStyle = "black";
     ctx.textAlign = "right";
-    ctx.fillText = ("AMMO: " +ammoCount, canvas.width - 20, 35);
+    ctx.fillText("AMMO: " +ammoCount, 630, 35);
 }
 
 function gameLoop() {
