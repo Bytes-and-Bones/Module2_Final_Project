@@ -8,6 +8,70 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         survivorNameElement.textContent = "Humble Leader";
     }
+
+    const triviaQuestions = [
+        {
+            question: "What does HTML stand for?",
+            choices: ["Hyper Text Markup Language", "Hyper Tensile Material Language", "Hiroglyphic Text Made Long"],
+            correctIndex: 0
+        },
+        {
+            question: "In what year did WWII end?",
+            choices: ["1495", "1845", "1943", "1945"],
+            correctIndex: 3
+        },
+        {
+            question: "Is Ecuador a part of Mexico?",
+            choices: ["True", "False"],
+            correctIndex: 1
+        },
+        {
+            questionn: "For which team did Michael Jordan NOT play?",
+            choices: ["Chicago Bulls", "Memphis Grizzlies", "Washington Wizards"],
+            correctIndex: 1
+        },
+        {
+            question: "Which acclaimed Japanese filmmaker directed the Academy Award-winning animated feature Spirited Away?",
+            choices: ["Satoshi Kon", "Hidetaka Miyazaki", "Makoto Shinkai", "Hayao Miyazaki"],
+            correctIndex: 3
+        },
+        {
+            question: "What was the first toy to be advertised on television?",
+            choices: ["Barbie Doll", "Mr.Potato Head", "Nerf Blaster","Lego Bionicle", "Cabbage Patch Kids"],
+            correctIndex: 1
+        },
+        {
+            question: "What is the dot over the letters 'i' and 'j' called?",
+            choices: ["Tilde", "Dot", "Tittle", "Point"],
+            correctIndex: 2
+        },
+        {
+            question: "How many hearts does and Octopus have?",
+            choices: ["4", "8", "3", "6", "3.14"],
+            correctIndex: 2
+        },
+        {
+            question: "Is that Solid Snake?",
+            choices: ["Yes", "No! That is NOT Solid Snake!!!", "What?!?!?", "I don't know"],
+            correctIndex: 1 
+        },
+        {
+            question: "What famous landmark in Italy is known for leaning in one side?",
+            choices: ["Leaning Tower of Pizza", "Leaning Tower of Paris", "Leaning Tower of Mona Lisa", "Leaning Tower of Pisa"],
+            correctIndex: 3
+        },
+        {
+            question: "What currency is used in Japan?",
+            choices: ["Pokemon Cards", "Dollar", "Yen", "Francs"],
+            correctIndex: 2
+        },
+        {
+            question: "What is the name of the Author that wrote Frankenstein?",
+            choices: ["Jane Austen", "Mary Shelley", "Miriam Wells", "Virginia Woolf"],
+            correctIndex: 1
+        },
+
+    ]
 });
 
 const canvas = document.getElementById("gameCanvas");
@@ -22,7 +86,7 @@ playerImg.src = "Assets/Player.png"
 let playerY = 180;
 const playerX = 50;
 const playerSpeed = 5;
-const playerSize = 90;
+const playerSize = 120;
 
 let bullets = [];
 let zombies = [];
@@ -60,7 +124,7 @@ function spawnZombie() {
     const skyHeight = 100;
     const zSize = 120;
     const playArea = canvas.height - skyHeight - zSize;
-    
+
 
     zombies.push({
         x: canvas.width + 20,
