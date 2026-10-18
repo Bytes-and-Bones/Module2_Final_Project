@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
     <h1>Headwear Collection</h1>
-    <div id="shop">
-        //Items here
+    <div class="intro" style="text-align: center; max-width: 400px;">
+        <h2>Your Balance: <span id="coin-display" style="color: #4af626;">0</span> Zombie Coins</h2>
+    </div>
+
+    <div class="intro" style="max-width: 800px; display: flex; justify-content: space-around; flex-wrap: wrap;">
+
+        <div class="shop-item"
+            style="border: 2px solid #4af626; padding: 15px; border-radius: 8px; width: 200px; text-align: center; margin: 10px;">
+            <h3>Coin Multiplier Hat</h3>
+            <img src="Assets/MultiplierHat.png" alt="Multiplier Hat"
+                style="width: 80px; height: 80px; display: block; margin: 0 auto 10px auto;">
+            <p>Earn points faster!</p>
+            <p style="color: #ff4444;">Cost: 50 Coins</p>
+            <button id="buy-multiplier" class="menu-btn" style="font-size: 1rem; padding: 5px 10px;">Buy</button>
+        </div>
+
+        <div class="shop-item"
+            style="border: 2px solid #4af626; padding: 15px; border-radius: 8px; width: 200px; text-align: center; margin: 10px;">
+            <h3>Spare Shield Hat</h3>
+            <img src="Assets/ShieldHat.png" alt="Shield Hat"
+                style="width: 80px; height: 80px; display: block; margin: 0 auto 10px auto;">
+            <p>Survive 1 wrong answer x1</p>
+            <p style="color: #ff4444;">Cost: 150 Coins</p>
+            <button id="buy-shield" class="menu-btn" style="font-size: 1rem; padding: 5px 10px;">Buy</button>
+        </div>
+
+        <div class="shop-item"
+            style="border: 2px solid #4af626; padding: 15px; border-radius: 8px; width: 200px; text-align: center; margin: 10px;">
+            <h3>Infinite Ammo Hat</h3>
+            <img src="Assets/InfiniteHat.png" alt="Infinite Hat"
+                style="width: 80px; height: 80px; display: block; margin: 0 auto 10px auto;">
+            <p>Never run out of ammo!</p>
+            <p style="color: #ff4444;">Cost: 300 Coins</p>
+            <button id="buy-infinite" class="menu-btn" style="font-size: 1rem; padding: 5px 10px;">Buy</button>
+        </div>
+
     </div>
 
     <nav class="shop-nav-bar">
@@ -20,4 +56,5 @@
     <script src="shop.js"></script>
 
 </body>
+
 </html>
