@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             correctIndex: 1
         },
         {
-            questionn: "For which team did Michael Jordan NOT play?",
+            question: "For which team did Michael Jordan NOT play?",
             choices: ["Chicago Bulls", "Memphis Grizzlies", "Washington Wizards"],
             correctIndex: 1
         },
@@ -69,10 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
             question: "What is the name of the Author that wrote Frankenstein?",
             choices: ["Jane Austen", "Mary Shelley", "Miriam Wells", "Virginia Woolf"],
             correctIndex: 1
-        },
+        }
 
-    ]
-});
+    ];
+
+    let isTriviaActive = false;
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -117,6 +118,46 @@ function shootBullet() {
         ammoCount--;
         console.log("Ammo left: " + ammoCount);
     }
+
+    if (ammoCount <=0) {
+        setTimeout(launchTriviaChallenge, 100);
+    }
+}
+
+function launchTriviaChallenge(){
+    isTriviaActive = true;
+
+    const randomIndex = Math.floor(Math.random() * triviaQuestions.length);
+    const activeQuestion = triviaQuestions[randomIndex];
+
+    let promptMessage = activeQuestion.question + "\n\n";
+    activeQuestion.choices.forEach((choice, index) => {
+        promptMessage += `${index}: ${choice}\n`;
+    });
+
+    const startTime = performance.now();
+    const playerResponse = prompt(promptMessage);
+    const endTime = performance.now();
+
+    const secondsTaken = ((endTime - startTime) / 1000).toFixed(1);
+
+    if (playerResponse !== null && parseInt(playerResponse) === activeQuestion.correctIndex) {
+        if (secondsTaken <= 3.0) {
+            ammoCount += 15;
+            alert(`Fantastic! Answered in ${secondsTaken}s. +15 Max Ammo!`);
+        }else if(secondsTaken <= 7.0) {
+            ammoCount += 7;
+            alert(`Correct! Answered in ${secondsTaken}s. +7 Ammo.`);
+        }else{
+            ammoCount += 2;
+            alert(`Correct but too slow (${secondsTaken}s). +2 Ammo.`);
+        }
+    
+    }else{
+        alert("Incorrect! No ammo for you!");
+    }
+
+    isTriviaActive = false;
 }
 
 function spawnZombie() {
@@ -167,6 +208,8 @@ function updateGameLogic() {
 
 function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.textAlign = "left";
+   
 
     if (playerImg.complete && playerImg.naturalWidth !== 0) {
         ctx.drawImage(playerImg, playerX, playerY, playerSize, playerSize);
@@ -188,12 +231,21 @@ function drawGame() {
             ctx.fillRect(zombie.x, zombie.y, zombie.width, zombie.height);
         }
     });
+
+    ctx.font = "bold 20px 'Courier New' Courier, monospace";
+    ctx.fillStyle = "#4af626";
+    ctx.textAlign = "right";
+    ctx.fillText = ("AMMO: " +ammoCount, canvas.width - 20, 35);
 }
 
 function gameLoop() {
-    updateGameLogic();
-    drawGame();
+    if (!isTriviaActive) {
+        updateGameLogic();
+        drawGame();
+    }
+    
     requestAnimationFrame(gameLoop);
 }
 
 gameLoop();
+});
