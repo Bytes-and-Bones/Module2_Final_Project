@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.font = "20px 'Courier New', Courier, monospace";
         ctx.fillStyle = "#ffffff";
         ctx.fillText("The zombies ate your brainz!", 300, 230);
-        ctx.fillText("Click 'Not Ready Yet!' or 'Headwear Collection' to refresh and retry.", 300, 260);
+        ctx.fillText("Click 'Not Ready Yet!' or 'Headwear Collection'.", 300, 260);
     }
     function launchTriviaChallenge() {
         isTriviaActive = true;
@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.font = "20px 'Courier New', Courier, monospace";
         ctx.fillStyle = "#ffffff";
         ctx.fillText("The zombies ate your brainz!", 400, 230);
-        ctx.fillText("Click 'Main Menu' or 'Shop' to retry.", 400, 260);
+        ctx.fillText("Click 'Not Ready Yet!' or 'Headwear Collection'.", 400, 260);
     }
 }
 
